@@ -1,0 +1,45 @@
+<div class="container-fluid intender">
+        <div class="row">
+            <div class="navi col-md-3">
+                <center> <img src="img/dp.jpg" height="100px" width="100px" class="img-circle"></center>
+                <ul class="navigation">
+                    <li><a href="#">Home</a></li>
+                    <li>Blog</li>
+                    <li>Pics</li>
+                </ul>
+                
+            </div>
+            <div class="col-md-6" >
+                <h1>About me</h1>
+                <div class="content">
+                    So, all that's obvious is am a coder. I code in C,C++,Python, C#, Java, at times when time and net call's PHP. Not to miss out my favorite Assembly :D, one language that give solution to all problems :D. <br><br>
+So , in short am a Scientist, Anthropologist , Technocrat and biggest Crack pot of Human histories. at times you can't define me in a HEAP
+                </div><br><br>
+                <h1>Projects</h1>
+                 <input ng-model="searchproject" placeholder="Search" type="search" class="curveboder"/>
+                
+                
+                <ul>
+                    <li class="content" ng-repeat="project in projects | filter:searchproject" >
+                    	<a href="#/projects/{{project.id}}">
+                        <span>{{project.name}}</span><br></a>
+                        <p>{{project.description}}</p>
+                    </li>
+                
+                </ul>
+                
+            </div>
+        
+        </div>
+       
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>Contact</h1>
+                <div class="content">
+                	<p>Click here to send a mail to me </p>
+                	<p>twitter,facebook,google+</p>
+                </div>
+            </div>
+        </div>
+    
+    </div>

@@ -1,0 +1,10 @@
+{
+  "name"         : "checker",
+  "version"      : "0.0.0",
+  "description"  : "Simple todo application.",
+  "main"         : "app.js",
+  "author"       : "Vikene",
+  "dependencies" : {
+    "express"    : "~4.7.2"
+	}
+}

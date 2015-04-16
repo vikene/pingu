@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="vikeneApp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href= "bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="controllers/router.js"></script>
+    <script src="controllers/controller.js"></script>
+<style>
+body{
+	font-family: 'Roboto', sans-serif;
+}
+.yoyo{
+	background:#eee;
+}
+.content{
+font-family: 'Poiret One', cursive;
+    font-size: 25px;
+}
+.navi ul{
+    list-style: none;
+    text-decoration: none;
+
+}
+.navi li{
+    padding-top: 20px;
+    
+}
+
+.intender{
+	padding-top:40px;
+	
+}
+    
+.curveboder{
+
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: relative;
+    left: 500px;
+    top:-50px;
+    
+}
+.navigation{
+	padding-top:10px;
+	position:relative;
+	left:65px;
+}
+
+</style>
+</head>
+<body >
+
+<div ng-view >
+</div>
+    
+
+</body>
+</html>
