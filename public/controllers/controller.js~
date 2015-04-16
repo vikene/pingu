@@ -4,7 +4,7 @@ var vikeneAppControllers = angular.module('vikenAppControllers',[]);
 
 vikeneAppControllers.controller('projectlistctrl',['$scope','$http',function($scope,$http)
                      {
-	$http.get('controllers/projects.json').success(function(data)
+	$http.get('projects/projects.json').success(function(data)
 {
 	 $scope.projects = data;
 	console.log('working')

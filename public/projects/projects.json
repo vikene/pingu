@@ -1,0 +1,56 @@
+[ {	
+		"id":"improc.js",
+            "name":"improc.js",
+            "description":"awesome html5 image processing library"},
+        {
+        "id":"Pairwise Keying",
+        "name":"Pairwise keying in ZigBee",
+        "description":"Implementation hop-count based pair wise keying in zigbee network"
+        },
+        {
+        	"id":"Design of Firewall Protocol",
+        	"name":"Design of Firewall protocol and load balancing in Mini2440",
+        	"description":"DOs attack and syn flood attack prevention in an embedded server"
+        
+        },
+        {
+        	"id":"Smart Stick",
+        	"name":"SMART walking stick project for The Electronics Club @ SASTRA",
+        	"description":"This one is the coolest I ever designed, it helps blind ones to find way :P this one isn't a smart phone connected stick :P"
+        },
+        {
+        	"id":"NLP using microcontroller",
+        	"name":"Design of Natural Language Processing and automation system",
+        	"description":"This one, nothing much made a slight modification to algorithm"
+        },
+        {
+        	"id":"LabVIEW",
+        	"name":"Pattern Recognition and Emotion Detection",
+        	"description":"Train coded program :) "
+        	
+        },
+        {
+        	"id":"Windows Phone app",
+        	"name":"Flipboard Clone for Windows phone 8",
+        	"description":"Real time web scrapper to figurout news and awesome content in windows phone, Discontinued"
+        },
+        {
+        	"id":"bunkAPP",
+        	"name":"Bunk app for windows 8/8.1",
+        	"description":"This app counts bunk histories in college"
+        },
+        {
+        	"id":"WebAPP",
+        	"name":"Akon Fan app for S40 and ASHA phones",
+        	"description":"Gives up updates about HIP-HOP star AKON"
+        },
+        {
+        	"id":"FirstAID",
+        	"name":"FirstAID app for Nokia ASHA platform",
+        	"description":"I guess no intro has to be given, but then this one has notification API enabled, realtime updates and disaster management tips can be pushed to users"
+        
+        }
+        
+        
+        
+]
