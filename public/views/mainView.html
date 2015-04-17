@@ -3,9 +3,9 @@
             <div class="navi col-md-3">
                 <center> <img src="img/dp.jpg" height="100px" width="100px" class="img-circle"></center>
                 <ul class="navigation">
-                    <li><a href="#">Home</a></li>
-                    <li>Blog</li>
-                    <li>Pics</li>
+                <li ng-repeat ="navi in navigator">
+                    <a href="{{navi.link}}">{{navi.name}}</a>
+                </li>
                 </ul>
                 
             </div>

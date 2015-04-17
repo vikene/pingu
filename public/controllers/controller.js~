@@ -9,6 +9,13 @@ vikeneAppControllers.controller('projectlistctrl',['$scope','$http',function($sc
 	 $scope.projects = data;
 	console.log('working')
 })
+
+	$http.get('projects/navigation.json').success(function(datum){
+	
+		$scope.navigator = datum;
+		console.log('yoyo working')
+	
+	})
    
 }]);
 
