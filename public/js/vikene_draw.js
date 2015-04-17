@@ -6,7 +6,7 @@ $('document').ready( function ()
     var socket = io();
    
     var canny = document.getElementById("drawer");
-  //  var db = new Firebase('https://shining-fire-3896.firebaseio.com/draw');
+    
     if(canny)
     {
             var context = canny.getContext("2d");
@@ -24,7 +24,7 @@ $('document').ready( function ()
                     ccy = e.pageY - canny.offsetTop;
                     context.moveTo(ccx,ccy);
                     lock_down = true;
-                   //db.child(count).set(ccx+":"+ccy+":"+"0");
+                   
                     socket.emit("drawing_onprocess",ccx+":"+ccy+":"+"0");
                     count++;
                     
@@ -35,8 +35,8 @@ $('document').ready( function ()
                     {
                         ccx1 = e.pageX - canny.offsetLeft;
                         ccy1 = e.pageY - canny.offsetTop;
-                       // db.child(count).set(ccx1+":"+ccy1+":"+"1");
-                              socket.emit("drawing_onprocess",ccx1+":"+ccy1+":"+"1");
+       
+                           socket.emit("drawing_onprocess",ccx1+":"+ccy1+":"+"1");
                         count++;
                         context.lineTo(ccx1,ccy1);
                         
@@ -68,7 +68,7 @@ $('document').ready( function ()
                     ccy = e.pageY - canny.offsetTop;
                     context.moveTo(ccx,ccy);
                     lock_down = true;
-                  // db.child(count).set(ccx+":"+ccy+":"+"0");
+                  db.child(count).set(ccx+":"+ccy+":"+"0");
                     count++;
                     
                 
@@ -78,7 +78,7 @@ $('document').ready( function ()
                     {
                         ccx1 = e.pageX - canny.offsetLeft;
                         ccy1 = e.pageY - canny.offsetTop;
-                      //  db.child(count).set(ccx1+":"+ccy1+":"+"1");
+                        db.child(count).set(ccx1+":"+ccy1+":"+"1");
                         count++;
                         context.lineTo(ccx1,ccy1);
                         
@@ -99,7 +99,7 @@ $('document').ready( function ()
      
                 
         });
-      /*  function paintit(snapshot)
+       /*function paintit(snapshot)
         {
            var dataa = snapshot.val().split(":");
             if(dataa[2] == 0)
@@ -115,9 +115,11 @@ $('document').ready( function ()
             context.stroke();
             }
         }*/
-        socket.on("paintit",function(snap){
-        
-             var dataa = snap.val().split(":");
+      
+        socket.on('paintit',function(snap){
+           
+             var dataa = snap.split(":");
+            console.log(snap);
             if(dataa[2] == 0)
             {
                     context.closePath();
@@ -134,7 +136,7 @@ $('document').ready( function ()
         })
         
         $('#clear').click(function () {
-         //  db.remove();
+     //      db.remove();
             location.reload();
         });
         
@@ -142,9 +144,7 @@ $('document').ready( function ()
         {
             location.reload();
         }
-       // db.on('child_added',paintit);
-       // db.on('child_changed',paintit);
-      //  db.on('child_removed',cleanit);
+     
             
     }
     
