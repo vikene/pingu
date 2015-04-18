@@ -5,6 +5,8 @@
   "main"         : "app.js",
   "author"       : "Vikene",
   "dependencies" : {
-    "express"    : "~4.7.2"
+    "express"    : "~4.7.2",
+    "mongodb"	: "*",
+    "monk" 	: "*"
 	}
 }

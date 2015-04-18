@@ -4,13 +4,13 @@ var vikeneAppControllers = angular.module('vikenAppControllers',[]);
 
 vikeneAppControllers.controller('projectlistctrl',['$scope','$http',function($scope,$http)
                      {
-	$http.get('projects/projects.json').success(function(data)
+	$http.get('projlist').success(function(data)
 {
 	 $scope.projects = data;
 	console.log('working')
 })
 
-	$http.get('projects/navigation.json').success(function(datum){
+	$http.get('/navigation').success(function(datum){
 	
 		$scope.navigator = datum;
 		console.log('yoyo working')
@@ -19,7 +19,11 @@ vikeneAppControllers.controller('projectlistctrl',['$scope','$http',function($sc
    
 }]);
 
-vikeneAppControllers.controller('detailctrl', ['$scope','$routeParams',function($scope,$routeParams){
+vikeneAppControllers.controller('detailctrl', ['$scope','$http','$routeParams',function($scope,$http,$routeParams){
+
+	$http.get('/database').success(function(dud){
+		$scope.users = dud;
+	})
 	$scope.projectID = $routeParams.projectID;
 	
 }]);
