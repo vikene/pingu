@@ -6,7 +6,7 @@ $('document').ready( function ()
     var socket = io();
    
     var canny = document.getElementById("drawer");
-    
+  //  var db = new Firebase('https://shining-fire-3896.firebaseio.com/draw');
     if(canny)
     {
             var context = canny.getContext("2d");
@@ -24,8 +24,11 @@ $('document').ready( function ()
                     ccy = e.pageY - canny.offsetTop;
                     context.moveTo(ccx,ccy);
                     lock_down = true;
-                   
+           //        db.child(count).set(ccx+":"+ccy+":"+"0");
+
                     socket.emit("drawing_onprocess",ccx+":"+ccy+":"+"0");
+                    socket.emit("drawing_start",ccx+":"+ccy+":"+"0");
+
                     count++;
                     
                 
@@ -35,17 +38,19 @@ $('document').ready( function ()
                     {
                         ccx1 = e.pageX - canny.offsetLeft;
                         ccy1 = e.pageY - canny.offsetTop;
-       
+
+                    //   db.child(count).set(ccx1+":"+ccy1+":"+"1");
                            socket.emit("drawing_onprocess",ccx1+":"+ccy1+":"+"1");
+                      //  db.child(count).set(ccx1+":"+ccy1+":"+"1");
+                              socket.emit("drawing_onprocess",ccx1+":"+ccy1+":"+"1");
+
                         count++;
                         context.lineTo(ccx1,ccy1);
                         
                         context.stroke();
                         
                          data = context.getImageData(0,0,512,512);
-                var canny2 = document.getElementById("drawer2");
-                var ctx = canny2.getContext("2d");
-                ctx.putImageData(data,0,0);
+                
                        
                         
                     }
@@ -68,7 +73,11 @@ $('document').ready( function ()
                     ccy = e.pageY - canny.offsetTop;
                     context.moveTo(ccx,ccy);
                     lock_down = true;
-                  db.child(count).set(ccx+":"+ccy+":"+"0");
+
+                 // db.child(count).set(ccx+":"+ccy+":"+"0");
+
+                   //db.child(count).set(ccx+":"+ccy+":"+"0");
+
                     count++;
                     
                 
@@ -78,7 +87,7 @@ $('document').ready( function ()
                     {
                         ccx1 = e.pageX - canny.offsetLeft;
                         ccy1 = e.pageY - canny.offsetTop;
-                        db.child(count).set(ccx1+":"+ccy1+":"+"1");
+                      //  db.child(count).set(ccx1+":"+ccy1+":"+"1");
                         count++;
                         context.lineTo(ccx1,ccy1);
                         
@@ -99,7 +108,11 @@ $('document').ready( function ()
      
                 
         });
-       /*function paintit(snapshot)
+
+   /*    function paintit(snapshot)
+
+        function paintit(snapshot)
+>>>>>>> parent of 8ddcabe... Socket fine , db down
         {
            var dataa = snapshot.val().split(":");
             if(dataa[2] == 0)
@@ -114,7 +127,8 @@ $('document').ready( function ()
             context.lineTo(dataa[0],dataa[1]);
             context.stroke();
             }
-        }*/
+        }
+<<<<<<< HEAD*/
       
         socket.on('paintit',function(snap){
            
@@ -135,8 +149,9 @@ $('document').ready( function ()
         
         })
         
+
         $('#clear').click(function () {
-     //      db.remove();
+           //db.remove();
             location.reload();
         });
         
@@ -144,7 +159,15 @@ $('document').ready( function ()
         {
             location.reload();
         }
-     
+/*<<<<<<< HEAD
+      db.on('child_added',paintit);
+       db.on('child_changed',paintit);
+      db.on('child_removed',cleanit);
+=======
+        db.on('child_added',paintit);
+        db.on('child_changed',paintit);
+        db.on('child_removed',cleanit);
+>>>>>>> parent of 8ddcabe... Socket fine , db down*/
             
     }
     
