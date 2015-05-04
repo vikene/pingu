@@ -1,0 +1,29 @@
+
+
+import requests
+import sys
+class post_client:
+		
+	def __init__(self,url,portnumber):
+		self.url = url
+		self.portnumber = portnumber
+	
+	def connect(self, username, password):
+		self.uname = username
+		self.passw = password
+	def openfile(self, filename,extn):
+		self.file = filename
+		self.extn = extn
+		self.payload = {'uname':'anirud','pass':'yoyo','directory':'vikenee','filename':self.file,'exten':self.extn,'content-length':'10','author':'vikene'}
+	def download(self):
+		r =requests.get('http://localhost:8000',data=self.payload)
+		fi = open(self.file+"."+self.extn,'w')
+		fi.write(r.text)
+		fi.close()
+		print "file Downed ma man!"
+		
+		
+		
+sync_client = post_client('localhost',8000)
+sync_client.openfile("sync_content","txt")
+sync_client.download()
