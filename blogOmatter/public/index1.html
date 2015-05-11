@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+    HELOOW</title>
+    <style>
+    body{
+    
+        margin:0;
+        overflow:hidden;
+    }
+    
+    </style>
+    <script src="three.js"></script>
+    <Script src="scripts/OrbitControls.js"></Script>
+    <script src="scripts/stats.min.js"></script>
+    <script src="scripts/dat.gui.min.js"></script>
+    <script src="scripts/EffectComposer.js"></script>
+<script src="scripts/RenderPass.js"></script>
+<script src="scripts/CopyShader.js"></script>
+<script src="scripts/ShaderPass.js"></script>
+<script src="scripts/MaskPass.js"></script>
+    <script>
+    var camera;
+var scene;
+var renderer;
+var cameraControl;
+var cameraBG;
+var sceneBG;
+var composer;
+function _3boot()
+{
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,0.1,1000);
+    renderer = new THREE.WebGLRenderer();
+    renderer.setClearColor(0x000000,1);
+    renderer.setSize(window.innerWidth,window.innerHeight);
+    
+    // our globe object !
+    
+    
+    var earthGeo = new THREE.SphereGeometry(15,30,30);
+    var earthMat = createEarthMaterial();
+    var earth = new THREE.Mesh(earthGeo,earthMat);
+    earth.name="myearth";
+    scene.add(earth);
+    
+    
+    var cloudGeo = new THREE.SphereGeometry(earthGeo.parameters.radius*1.01,earthGeo.parameters.widthSegments,earthGeo.parameters.heightSegments);
+    var cloudMat = createClouds();
+    var clouds = new THREE.Mesh(cloudGeo,cloudMat);
+    clouds.name= 'cloud';
+    scene.add(clouds);
+    
+    // directional light
+    
+    var directionallight = new  THREE.DirectionalLight(0xffffff,1);
+    directionallight.position = new THREE.Vector3(100,10,-50);
+    directionallight.name="dd1";
+    scene.add(directionallight);
+    
+    var ambientlight = new THREE.AmbientLight(0x111111);
+    scene.add(ambientlight);
+    
+    
+    
+    camera.position.x =35;
+    camera.position.y=36;
+    camera.position.z=33;
+    
+    camera.lookAt(scene.position);
+    
+    cameraBG = new THREE.OrthographicCamera(-window.innerWidth,
+                                           window.innerWidth,
+                                           window.innerHeight,
+                                           -window.innerHeight,
+                                           -10000,10000);
+    cameraBG.position.z=50;
+    
+    sceneBG = new THREE.Scene();
+    var materialColor = new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture("assets/starry_background.jpg"),depthTest:false});
+    var bgplane = new THREE.Mesh(new THREE.PlaneGeometry(1,1),materialColor);
+    bgplane.position.z = -100;
+    bgplane.scale.set(window.innerWidth*2,window.innerHeight*2,1);
+    sceneBG.add(bgplane);
+    var bgPass = new THREE.RenderPass(sceneBG,cameraBG);
+    var renderPass = new THREE.RenderPass(scene,camera);
+    renderPass.clear = false;
+    var effectcopy = new THREE.ShaderPass(THREE.CopyShader);
+    effectcopy.renderToScreen = true;
+    composer = new THREE.EffectComposer(renderer);
+    composer.addPass(bgPass);
+    composer.addPass(renderPass);
+    composer.addPass(effectcopy);
+    cameraControl = new THREE.OrbitControls(camera);
+    document.body.appendChild(renderer.domElement);
+    
+    render();
+    
+}
+
+function render()
+{
+    cameraControl.update();
+    scene.getObjectByName('myearth').rotation.y+=0.01;
+    scene.getObjectByName('cloud').rotation.y+=0.0101;
+    requestAnimationFrame(render);
+    renderer.autoClear = false;
+    composer.render();
+    
+
+}
+
+function createEarthMaterial(){
+var earthtex = THREE.ImageUtils.loadTexture("assets/earthmap4k.jpg");
+    var earthMat =  new THREE.MeshPhongMaterial();
+    var normalMap = new THREE.ImageUtils.loadTexture("assets/earth_normalmap_flat4k.jpg");
+    var specularMap = new THREE.ImageUtils.loadTexture("assets/earthspec4k.jpg");
+    
+    earthMat.map = earthtex;
+    earthMat.normalMap = normalMap;
+    earthMat.normalScale = new THREE.Vector2(0.5,0.7);
+    earthMat.specularMap = specularMap;
+    earthMat.specular = new THREE.Color(0x262626);
+    return earthMat;
+
+    
+}
+
+function createClouds(){
+var cloudtex= THREE.ImageUtils.loadTexture("assets/fair_clouds_4k.png");
+    var cloudMAt = new THREE.MeshBasicMaterial();
+    cloudMAt.map = cloudtex;
+    cloudMAt.transparent = true;
+    return cloudMAt;
+
+}
+
+window.onload= _3boot;
+    
+    </script>
+</head>
+    <body></body>
+</html>

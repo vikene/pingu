@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/socket.io.js"></script>
+<body>
+
+ <div class="main">
+    <h2>Device Motion</h2>
+    <table>
+     
+     
+      <tr>
+        <td>accelerationIncludingGravity</td><td id="moAccelGrav"></td>
+      </tr>
+      
+    </table>
+  </div>
+    
+    <p id="moti"></p>
+  
+  <script type="text/javascript">
+  
+    init();
+var socket = io();
+    
+    function init() {
+      if ((window.DeviceMotionEvent) || ('listenForDeviceMovement' in window)) {
+        window.addEventListener('devicemotion', deviceMotionHandler, false);
+      } else {
+        document.getElementById("dmEvent").innerHTML = "Not supported on your device or browser.  Sorry."
+      }
+    }
+    
+    function deviceMotionHandler(Data) {
+      var info, xyz = "[X, Y, Z]";
+
+     
+      var acceleration = Data.acceleration;
+     
+      acceleration = Data.accelerationIncludingGravity;
+      info = xyz.replace("X", round(acceleration.x));
+      info = info.replace("Y", round(acceleration.y));
+      info = info.replace("Z", round(acceleration.z));
+      document.getElementById("moAccelGrav").innerHTML = info;
+        orientation(acceleration.x);
+            }
+
+    function round(val) {
+      var amt = 100;
+      return Math.round(val * amt)/amt;
+    }
+
+function orientation(data){
+
+    
+    if(data > 2)
+    {
+    
+        document.getElementById("moti").innerHTML = "Moving left";
+        socket.emit('orient',round(data));
+        
+    }
+    else
+    {
+    
+        document.getElementById("moti").innerHTML = "Moving right";
+        socket.emit('orient',round(data));
+    }
+    
+
+}
+
+  </script>
+</body>
+</html> 

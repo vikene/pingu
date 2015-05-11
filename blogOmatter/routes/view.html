@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>View</title>
+        <script src="http://localhost:5000/scripts/jquery.js"></script>
+        <script src="http://localhost:5000/scripts/socket.io.js"></script>
+        <script>
+        var socket = io();
+
+            socket.on('movebg',function(msg){
+              
+               var stringsss = "rotate("+-1*msg*10+"deg)";
+                $("#vand").css('transform',stringsss);
+                
+               
+               
+            });
+        </script>
+        <style>
+        img{
+        
+                margin-top: 200px;
+        
+        }
+        </style>
+    </head>
+    <body>
+        <center>
+    <img id="vand" src="http://localhost:5000/rasp.jpg" width="450" height="450">
+        </center>
+    </body>
+</html>
