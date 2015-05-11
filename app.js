@@ -45,5 +45,5 @@ app.get('/projlist',function(req,res)
 	})
 })
 
-app.listen(8000)
+app.listen(80)
 console.log("On at 8080")
