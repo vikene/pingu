@@ -22,7 +22,7 @@
   
     init();
 var socket = io();
-    
+    var channel = prompt("Enter a channel name please")
     function init() {
       if ((window.DeviceMotionEvent) || ('listenForDeviceMovement' in window)) {
         window.addEventListener('devicemotion', deviceMotionHandler, false);
@@ -57,14 +57,14 @@ function orientation(data){
     {
     
         document.getElementById("moti").innerHTML = "Moving left";
-        socket.emit('orient',round(data));
+        socket.emit('orient',channel,round(data));
         
     }
     else
     {
     
         document.getElementById("moti").innerHTML = "Moving right";
-        socket.emit('orient',round(data));
+        socket.emit('orient',channel,round(data));
     }
     
 

@@ -8,7 +8,7 @@ var routes = require('./routes/index');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-
+var dat = null ;
 
 function compile(str,path){
 	return stylus(str)
@@ -36,13 +36,15 @@ app.use(function(req,res,next){
 })
 
 app.use('/',routes);
+
 io.on('connection',function(socket){
 
 console.log("conn")
-	socket.on('orient',function(msg){
-
+		console.log(dat)
+	socket.on('orient',function(chan,msg){
+		console.log(dat)
 		console.log('orient data '+ parseInt(msg));
-		io.emit('movebg',msg);
+		io.emit('movebg',chan,msg);
 	})
 })
 http.listen(5394);

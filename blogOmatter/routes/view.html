@@ -6,12 +6,14 @@
         <script src="http://vigneashsundar.in:5394/scripts/socket.io.js"></script>
         <script>
         var socket = io();
-
-            socket.on('movebg',function(msg){
-              
+                var channel = prompt("Enter a channel name please")
+                
+            socket.on('movebg',function(chann,msg){
+              if(channel == chann)
+              {
                var stringsss = "rotate("+-1*msg*10+"deg)";
                 $("#vand").css('transform',stringsss);
-                
+              }
                
                
             });
