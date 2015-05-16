@@ -17,9 +17,9 @@ io.on('connection',function(socket){
         console.log(msg);
     
     })
-    socket.on("drawing_onprocess",function(msg){
+    socket.on("drawing_onprocess",function(msg,chn,un){
     	console.log(msg)
-        io.emit("paintit",msg);
+        io.emit("paintit",msg,chn,un);
     })
 
 })
