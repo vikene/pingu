@@ -21,6 +21,9 @@ io.on('connection',function(socket){
     	console.log(msg)
         io.emit("paintit",msg,chn,un);
     })
+	socket.on("reload",function(msg){
+	io.emit("rel",msg)
+})
 
 })
 http.listen(5000,function(err,res){

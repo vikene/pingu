@@ -142,9 +142,12 @@ $('document').ready( function ()
         
         $('#clear').click(function () {
      //      db.remove();
-            location.reload();
+            socket.emit("reload","reload")
         });
         
+        socket.on("rel",function(msg){
+            location.reload();
+        })
         function cleanit(snapshot)
         {
             location.reload();
