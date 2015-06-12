@@ -10,7 +10,14 @@
                 
             </div>
 		<div class="col-md-6">
-		This page gonna list about my {{projectID}} 
+            <b>Name of Project: {{projectID.name}} </b>
+            <br><hr><br>
+            <b>Description: </b>
+            <br>
+            {{projectID.description}}
+            <br><hr><br>
+            <b>Link</b>
+            <a href="{{projectID.link}}">Click here</a>
 		<div ng-repeat="user in users">
 		<span>{{user.name}}</span><br>
 		</div>
