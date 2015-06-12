@@ -4,6 +4,8 @@ $('document').ready( function ()
 {
     var data;
     var socket = io();
+    var channel = prompt("Enter you're channel name")
+    var username = prompt("You're nick name")
    
     var canny = document.getElementById("drawer");
     
@@ -25,7 +27,7 @@ $('document').ready( function ()
                     context.moveTo(ccx,ccy);
                     lock_down = true;
                    
-                    socket.emit("drawing_onprocess",ccx+":"+ccy+":"+"0");
+                    socket.emit("drawing_onprocess",ccx+":"+ccy+":"+"0",channel,username);
                     count++;
                     
                 
@@ -36,7 +38,7 @@ $('document').ready( function ()
                         ccx1 = e.pageX - canny.offsetLeft;
                         ccy1 = e.pageY - canny.offsetTop;
        
-                           socket.emit("drawing_onprocess",ccx1+":"+ccy1+":"+"1");
+                           socket.emit("drawing_onprocess",ccx1+":"+ccy1+":"+"1",channel,username);
                         count++;
                         context.lineTo(ccx1,ccy1);
                         
@@ -68,7 +70,7 @@ $('document').ready( function ()
                     ccy = e.pageY - canny.offsetTop;
                     context.moveTo(ccx,ccy);
                     lock_down = true;
-                  db.child(count).set(ccx+":"+ccy+":"+"0");
+                  db.child(count).set(ccx+":"+ccy+":"+"0",channel,username);
                     count++;
                     
                 
@@ -78,7 +80,7 @@ $('document').ready( function ()
                     {
                         ccx1 = e.pageX - canny.offsetLeft;
                         ccy1 = e.pageY - canny.offsetTop;
-                        db.child(count).set(ccx1+":"+ccy1+":"+"1");
+                        db.child(count).set(ccx1+":"+ccy1+":"+"1",channel,username);
                         count++;
                         context.lineTo(ccx1,ccy1);
                         
@@ -116,8 +118,10 @@ $('document').ready( function ()
             }
         }*/
       
-        socket.on('paintit',function(snap){
-           
+        socket.on('paintit',function(snap,chn,un){
+           if(channel==chn){
+               if(username != un)
+               {
              var dataa = snap.split(":");
             console.log(snap);
             if(dataa[2] == 0)
@@ -132,14 +136,18 @@ $('document').ready( function ()
             context.lineTo(dataa[0],dataa[1]);
             context.stroke();
             }   
-        
+               }
+           }
         })
         
         $('#clear').click(function () {
      //      db.remove();
-            location.reload();
+            socket.emit("reload","reload")
         });
         
+        socket.on("rel",function(msg){
+            location.reload();
+        })
         function cleanit(snapshot)
         {
             location.reload();
