@@ -1,6 +1,6 @@
 {
-    "name":"LabView Project",
-    "description":"a very cool project you could have imagined",
+    "name":"Expression Detection using LabVIEW",
+    "description":"This was my mini project for my under grads. This one was done in a single night at train from calicut to thanjavur. Two layer face and tone abstraction is its main objective. Initally skin tones are calculated, then based on skin tone it finds the presence of a person in that pic (I know it is not efficient and fails lot of time) yet to get away from so many NN's This was one solid solution for me. It worked!. So next it takes face features and compares with older smiling pics of that person, based on gamma degree of deviation it computes the expression of a person"
     "link":"http://vigneashsundar.in"
 
 }

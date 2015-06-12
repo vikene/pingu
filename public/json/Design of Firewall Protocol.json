@@ -1,6 +1,6 @@
 {
     "name":"Design of Firewall Protocol",
-    "description":"a very cool project you could have imagined",
+    "description":"This project was done during my second year at college along with a M.Tech student. So we did some good work on QT and IPTables based on a paper. The server was implemented in ARM9 based Mini2440 board, which came along with a touch screen. This was my first IOT project",
     "link":"http://vigneashsundar.in"
 
 }

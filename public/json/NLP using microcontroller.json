@@ -1,6 +1,6 @@
 {
     "name":"NLP using microcontroller",
-    "description":"a very cool project you could have imagined",
+    "description":"IIT Madras conducts it's techfest every year. This one was did for that, a circuit design challenge. I took on a language processing library which is was primitive in nature and had to completly resructure it to detect words. Technically this is just word detection and physical devices in relays. This got 3rd prize at that challenge ",
     "link":"http://vigneashsundar.in"
 
 }

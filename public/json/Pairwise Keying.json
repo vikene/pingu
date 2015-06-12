@@ -1,6 +1,6 @@
 {
     "name":"Pairwise keying ",
-    "description":"a very cool project you could have imagined",
+    "description":"First year with RTOS. Yep !! I had the job of implementing a custom cryptographic algorithim in zigbee with pairwise keying. I had to use zigbee protocol stack on 8051, and some serial interfaces. This was during my college first year.",
     "link":"http://vigneashsundar.in"
 
 }
