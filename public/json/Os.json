@@ -1,0 +1,6 @@
+{
+    "name":"Lisa Operating System",
+    "description":"I guess it was from my 8th grade I had plans of writing an operating system. I haven’t known till I came to my college that, Operating systems are no joke to be written on own by a single person. But then as dreams kill you, I started tinkering around some Open source Operating systems. Finally something awesome happened, I wrote a basic operating system, which has no more than 10 commands. No mmu support. It was awesome actually running on real mode with 16 color VGA :D.",
+    "link":"http://vigneashsundar.in"
+
+}

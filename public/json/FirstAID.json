@@ -1,0 +1,6 @@
+{
+    "name":"NOKIA ASHA native app",
+    "description":"I was reading a document which said that there are around 10000 children dying every year in africa, due to unsafe drinking water or no water to drink. This was something that pondered my heart like anything. So I took an analysis of which platform was most popular over that region and the result was Nokia. So i wrote an firstAid app, which has static contents in case if they need selfhelp. Other one feature was, Notification, something like OLA and uber. Asking if any neigbhour could provide water for their child. I used Nokia notification API with restfull services, but before i could release this one, NNA has become obsolute and nokia became Microsoft. Yet I have the code, planning to make this for android",
+    "link":"http://vigneashsundar.in"
+
+}
