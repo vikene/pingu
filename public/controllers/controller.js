@@ -24,6 +24,9 @@ vikeneAppControllers.controller('detailctrl', ['$scope','$http','$routeParams',f
 	$http.get('/database').success(function(dud){
 		$scope.users = dud;
 	})
-	$scope.projectID = $routeParams.projectID;
+$http.get('/json/'+$routeParams.projectID+'.json').success(function(dud){
+		$scope.projectID = dud;
+	})
+//	$scope.projectID = $routeParams.projectID;
 	
 }]);
